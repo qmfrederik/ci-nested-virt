@@ -10,11 +10,11 @@ steps:
   image: ubuntu:bionic
   commands:
   - lscpu | grep Virtualization
-  - lsmod | grep kvm
   - cat /proc/cpuinfo
   - sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
   - apt-get update
-  - apt-get install -y curl gnupg
+  - apt-get install -y curl gnupg lsmod
+  - lsmod | grep kvm
   - curl -o vagrant.deb https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
   - dpkg -i vagrant.deb
   - apt-get build-dep -y vagrant ruby-libvirt
