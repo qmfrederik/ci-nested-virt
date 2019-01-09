@@ -7,7 +7,7 @@ platform:
 
 steps:
 - name: kernel
-  image: ubuntu:xenial
+  image: ubuntu:bionic
   commands:
 #  - cat /proc/cpuinfo
   - apt-get update
