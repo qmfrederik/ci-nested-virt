@@ -12,7 +12,7 @@ steps:
 #  - cat /proc/cpuinfo
   - apt-get update
   - apt-get install -y curl
-  - curl https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb -O vagrant.deb
-  - curl https://download.virtualbox.org/virtualbox/6.0.0/virtualbox-6.0_6.0.0-127566~Ubuntu~bionic_amd64.deb -O virtualbox.deb
+  - curl -o vagrant.deb https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
+  - curl -o virtualbox.deb https://download.virtualbox.org/virtualbox/6.0.0/virtualbox-6.0_6.0.0-127566~Ubuntu~bionic_amd64.deb
   - dpkg -i virtualbox.deb
   - dpkg -i vagrant.deb
