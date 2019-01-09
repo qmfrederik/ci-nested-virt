@@ -1,6 +1,6 @@
 image: ubuntu
 
-build: off
+build: script
 
-test:
+build_script:
 - cat /proc/cpuinfo
