@@ -9,7 +9,9 @@ steps:
 - name: kernel
   image: ubuntu:bionic
   commands:
-#  - cat /proc/cpuinfo
+  - lscpu | grep Virtualization
+  - lsmod | grep kvm
+  - cat /proc/cpuinfo
   - sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
   - apt-get update
   - apt-get install -y curl gnupg
