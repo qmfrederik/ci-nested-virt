@@ -1,0 +1,4 @@
+image: ubuntu
+
+build:
+- cat /proc/cpuinfo
