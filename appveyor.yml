@@ -1,4 +1,6 @@
 image: ubuntu
 
-build:
+build: off
+
+test:
 - cat /proc/cpuinfo
