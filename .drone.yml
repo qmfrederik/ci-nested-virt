@@ -1,0 +1,13 @@
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: kernel
+  image: ubuntu:xenial
+  commands:
+  - cat /proc/cpuinfo
+
