@@ -8,9 +8,10 @@ platform:
 steps:
 - name: kernel
   image: geerlingguy/docker-ubuntu1804-ansible:latest
+  privileged: true
   commands:
-  - lscpu | grep Virtualization
-  - cat /proc/cpuinfo
+#  - lscpu | grep Virtualization
+#  - cat /proc/cpuinfo
   - sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
   - apt-get update
   - apt-get install -y curl gnupg kmod libvirt-daemon
@@ -23,3 +24,21 @@ steps:
   - vagrant plugin install vagrant-libvirt
   - libvirtd
   - vagrant up --provider=libvirt
+  volumes:
+  - name: mem
+    path: /dev/mem
+  - name: cgroup
+    path: /sys/fs/cgroup
+  - name: docker
+    path: /var/lib/docker
+
+volumes:
+- name: mem
+  host:
+    path: /dev/mem
+- name: cgroup
+  host:
+    path: /sys/fs/cgroup
+- name: docker
+  host:
+    path: /var/lib/docker
