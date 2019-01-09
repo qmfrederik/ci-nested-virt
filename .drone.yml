@@ -12,7 +12,7 @@ steps:
 #  - cat /proc/cpuinfo
   - apt-get update
   - apt-get install -y curl
-  - cat "deb https://download.virtualbox.org/virtualbox/debian bionic contrib" >> /etc/apt/sources.list
+  - echo "deb https://download.virtualbox.org/virtualbox/debian bionic contrib" >> /etc/apt/sources.list
   - curl -o oracle_vbox_2016.asc https://www.virtualbox.org/download/oracle_vbox_2016.asc
   - apt-key add oracle_vbox_2016.asc
   - apt-get update
