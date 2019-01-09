@@ -15,7 +15,7 @@ steps:
   - apt-get install -y curl gnupg
   - curl -o vagrant.deb https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
   - dpkg -i vagrant.deb
-  - apt-get build-dep vagrant ruby-libvirt
+  - apt-get build-dep -y vagrant ruby-libvirt
   - apt-get install -y qemu libvirt-bin ebtables dnsmasq-base
   - apt-get install -y libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
   - vagrant plugin install vagrant-libvirt
