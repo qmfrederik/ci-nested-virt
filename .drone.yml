@@ -10,6 +10,7 @@ steps:
   image: ubuntu:bionic
   commands:
 #  - cat /proc/cpuinfo
+  - sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
   - apt-get update
   - apt-get install -y curl gnupg
   - curl -o vagrant.deb https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
