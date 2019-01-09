@@ -13,4 +13,5 @@ steps:
   - apt-get update
   - apt-get install -y curl gnupg
   - curl -o vagrant.deb https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
-  - dpkg -i virtualbox.deb
+  - dpkg -i vagrant.deb
+  - vagrant up  
