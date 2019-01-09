@@ -7,7 +7,7 @@ platform:
 
 steps:
 - name: kernel
-  image: ubuntu:bionic
+  image: docker-ubuntu1804-ansible:latest
   commands:
   - lscpu | grep Virtualization
   - cat /proc/cpuinfo
