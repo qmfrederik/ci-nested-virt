@@ -21,4 +21,5 @@ steps:
   - apt-get install -y qemu libvirt-bin ebtables dnsmasq-base
   - apt-get install -y libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
   - vagrant plugin install vagrant-libvirt
+  - libvirtd
   - vagrant up --provider=libvirt
