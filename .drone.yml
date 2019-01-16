@@ -8,7 +8,7 @@ platform:
 steps:
 - name: kernel
   image: ubuntu:bionic
-  privileged: true
+#  privileged: true
   commands:
   - lscpu | grep Virtualization
   - cat /proc/cpuinfo | grep vmx
