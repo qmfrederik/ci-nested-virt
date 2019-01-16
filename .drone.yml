@@ -11,8 +11,8 @@ steps:
 #  privileged: true
   commands:
   - lscpu | grep Virtualization
-  - cat /proc/cpuinfo | grep vmx
-  - cat /proc/cpuinfo | grep svm
+#  - cat /proc/cpuinfo | grep vmx
+#  - cat /proc/cpuinfo | grep svm
   - lsmod | grep kvm
   - mknod /dev/kvm c 10 $(grep '\<kvm\>' /proc/misc | cut -f 1 -d' ')
   - dd if=/dev/kvm count=0
