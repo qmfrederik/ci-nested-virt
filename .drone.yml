@@ -7,38 +7,24 @@ platform:
 
 steps:
 - name: kernel
-  image: geerlingguy/docker-ubuntu1804-ansible:latest
+  image: ubuntu:bionic
   privileged: true
   commands:
-#  - lscpu | grep Virtualization
-#  - cat /proc/cpuinfo
-  - sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
-  - apt-get update
-  - apt-get install -y curl gnupg kmod libvirt-daemon
+  - lscpu | grep Virtualization
+  - cat /proc/cpuinfo | grep vmx
+  - cat /proc/cpuinfo | grep svm
   - lsmod | grep kvm
-  - curl -o vagrant.deb https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
-  - dpkg -i vagrant.deb
-  - apt-get build-dep -y vagrant ruby-libvirt
-  - apt-get install -y qemu libvirt-bin ebtables dnsmasq-base
-  - apt-get install -y libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
-  - vagrant plugin install vagrant-libvirt
-  - libvirtd
-  - vagrant up --provider=libvirt
-  volumes:
-  - name: mem
-    path: /dev/mem
-  - name: cgroup
-    path: /sys/fs/cgroup
-  - name: docker
-    path: /var/lib/docker
-
-volumes:
-- name: mem
-  host:
-    path: /dev/mem
-- name: cgroup
-  host:
-    path: /sys/fs/cgroup
-- name: docker
-  host:
-    path: /var/lib/docker
+  - mknod /dev/kvm c 10 $(grep '\<kvm\>' /proc/misc | cut -f 1 -d' ')
+  - dd if=/dev/kvm count=0
+#  - sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
+#  - apt-get update
+#  - apt-get install -y curl gnupg kmod libvirt-daemon
+#  - lsmod | grep kvm
+#  - curl -o vagrant.deb https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
+#  - dpkg -i vagrant.deb
+#  - apt-get build-dep -y vagrant ruby-libvirt
+#  - apt-get install -y qemu libvirt-bin ebtables dnsmasq-base
+#  - apt-get install -y libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
+#  - vagrant plugin install vagrant-libvirt
+#  - libvirtd
+#  - vagrant up --provider=libvirt
